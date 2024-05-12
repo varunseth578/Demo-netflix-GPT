@@ -1,6 +1,8 @@
 import React, { useState ,useRef } from "react";
 import Header from "./Header";
 import {checkValiDate} from "./utils/validate";
+import { createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
+import {auth} from "./Firebase";
 
 export default function Login() {
   const [isSignForm, setisSignForm] = useState(true);
@@ -11,6 +13,52 @@ export default function Login() {
   const handleButtonClick = () => {
     const message=checkValiDate(email.current.value,password.current.value)
     setErrorMessage(message);
+    if(message) return;
+
+    if(!isSignForm){
+      //signup 
+    
+createUserWithEmailAndPassword(auth,email.current.value,password.current.value)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+   
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMessage(errorCode+"---"+errorMessage);
+  });
+
+
+
+      
+
+    }else{
+      //sign in 
+      signInWithEmailAndPassword(auth,email.current.value,password.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMessage(errorCode+"---"+errorMessage);
+  });
+
+
+
+
+
+
+    }
+
+      
+      
+    
     
   };
   const toggleSignForm = () => {
