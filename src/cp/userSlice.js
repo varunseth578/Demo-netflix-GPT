@@ -10,11 +10,11 @@ const userSlice = createSlice({
         }, removeUser:(state,action)=>{
             return null;
 
-        }
-    }
-})
+        },
+    },
+});
 
 
-export const {addUser,removeUser} = userSlice.reducer;
+export const {addUser,removeUser} = userSlice.actions;
 export default userSlice.reducer;
 
