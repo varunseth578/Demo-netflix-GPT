@@ -1,14 +1,18 @@
 import React, { useState ,useRef } from "react";
 import Header from "./Header";
 import {checkValiDate} from "./utils/validate";
-import { createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
+import { createUserWithEmailAndPassword ,signInWithEmailAndPassword,updateProfile} from "firebase/auth";
 import {auth} from "./Firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from './userSlice';
 
 export default function Login() {
   const [isSignForm, setisSignForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -24,6 +28,18 @@ createUserWithEmailAndPassword(auth,email.current.value,password.current.value)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
+    updateProfile(user, {
+      displayName: name.current.value
+    }).then(() => {
+      // Profile updated!
+      // ...
+    }).catch((error) => {
+      // An error occurred
+      // ...
+    });
+    const{uid,email,displayName} = auth.currentUser;
+    dispatch(addUser({uid:uid,email:email,displayName:displayName}));
+    navigate("/browse");
     
    
     // ...
