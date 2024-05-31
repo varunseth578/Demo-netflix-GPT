@@ -1,41 +1,26 @@
 import React from "react";
-import { API } from "./constants";
-import { useEffect } from "react";
 
-export const VideoBack = () => {
-  const getMovieVideos = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/653346/videos?language=en-US",
-      API
-    );
-    const json = await data.json();
+import {  useSelector} from 'react-redux';
+import useMovieTrailer from "./hooks/useMovieTrailer";
 
-    const filterData = json.results.filter((video) => video.type === "Trailer");
-    const trailer = filterData[0];
-    console.log(trailer);
-  };
-  useEffect(() => {
-    getMovieVideos();
-  }, []);
+export const VideoBack = ({movieId}) => {
+ 
+  const trailer= useSelector((store) =>store.movies?.trailer);
+  useMovieTrailer(movieId);
+ 
   return (
-    <div>
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/Kdr5oedn7q8?si=SjOy87udL0O3xvpn"
+    <div className=" w-screen">
+      <iframe className=" w-screen aspect-video"
+        src={"https://www.youtube.com/embed/"+ trailer?.key +"?&autoplay=1&mute=1"}
         title="YouTube video player"
-      
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-       
-       
-      ></iframe>
+       ></iframe>
     </div>
   );
 };
 
-//*const filterData = json.results.filter(video => video.type=== "Trailer");
-//const trailer = filterData.length ? filterData[0] : json.results[0];
 
-//console.log(trailer);
 
-//src={"https://www.youtube.com/embed/"+trailer.key}
+
+
+
