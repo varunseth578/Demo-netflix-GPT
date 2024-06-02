@@ -16,8 +16,11 @@ const Browse = ()=> {
   return (
     <div>
     <Header />
+    <>
     <MainContainer/>
     <SecondaryContainer/>
+    </>
+    
     
     </div>
   );

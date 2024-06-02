@@ -8,7 +8,7 @@ export const MainContainer = () => {
     const movies = useSelector(store => store.movies?.nowPlaying);
     //if (!movies) return;
     if (movies === null ) return;  //early return ---program not move to next line if this line is fails
-    const mainMovie =movies[0];
+    const mainMovie =movies[2];
     
     const {original_title,overview , id}= mainMovie;
   return (

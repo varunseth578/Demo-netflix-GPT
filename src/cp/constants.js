@@ -10,6 +10,9 @@ export const API= {
   };
 
 
+  export const IMG ="https://image.tmdb.org/t/p/w500";
+
+
 
 
 
