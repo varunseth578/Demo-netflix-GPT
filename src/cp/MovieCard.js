@@ -1,5 +1,5 @@
 import React from "react";
-import { IMG } from "./constants";
+import { IMG } from "../utils/constants";
 
 const MovieCard = ({ posterPath }) => {
   if (!posterPath) return null;

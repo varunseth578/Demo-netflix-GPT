@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { addUser, removeUser } from "./userSlice";
+import { addUser, removeUser } from "../utils/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./Firebase";
+import { auth } from "../utils/Firebase";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { LOGO, USER } from "../cp/constants";
+import { LOGO, USER } from "../utils/constants";
 import { signOut } from "firebase/auth";
 
 const Header = () => {
@@ -33,7 +33,7 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between no-scrollbar">
       <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
 
       <div className="flex p-2 justify-between">

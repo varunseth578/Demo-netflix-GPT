@@ -1,15 +1,15 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
-import { checkValiDate } from "./utils/validate";
+import { checkValiDate } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "./Firebase";
+import { auth } from "../utils/Firebase";
 
 import { useDispatch } from "react-redux";
-import { addUser } from "./userSlice";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignForm, setisSignForm] = useState(true);

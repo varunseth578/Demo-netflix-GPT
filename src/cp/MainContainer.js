@@ -6,6 +6,7 @@ import VideoTitle from './VideoTitle'
 export const MainContainer = () => {
 
     const movies = useSelector(store => store.movies?.nowPlaying);
+    
     //if (!movies) return;
     if (movies === null ) return;  //early return ---program not move to next line if this line is fails
     const mainMovie =movies[2];

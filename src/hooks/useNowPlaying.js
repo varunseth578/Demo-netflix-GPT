@@ -1,6 +1,6 @@
-import { API } from '../constants';
+import { API } from '../utils/constants';
 import { useDispatch} from 'react-redux';
-import { addNowPlaying} from "../moviesSlice";
+import { addNowPlaying} from "../utils/moviesSlice";
 import  { useEffect } from 'react';
 
 
