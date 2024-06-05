@@ -37,9 +37,12 @@ const Header = () => {
       <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
 
       <div className="flex p-2 justify-between">
+      <button className=" text-red-600 font-bold text-2xl p-4 px-12 rounded-lg ">Home</button>
+      <button className=" text-red-600 font-bold text-2xl p-4 px-12 rounded-lg ">Movies</button>
+      <button className=" text-red-600 font-bold text-2xl p-4 px-12 rounded-lg ">TV Show</button>
         <img className=" w-12 h-12" alt="usericon" src={USER} />
 
-        <button onClick={handleSignOut} className="font-bold text-white ">
+        <button onClick={handleSignOut} className="font-bold text-xl text-red-600 ">
           (Sign Out)
         </button>
       </div>
