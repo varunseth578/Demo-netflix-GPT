@@ -5,13 +5,17 @@ import { auth } from "../utils/Firebase";
 import { useDispatch ,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LOGO, USER } from "../utils/constants";
+import { toggleGptSearch } from "../utils/gptSlice";
 
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
-
+ 
+  const handleGpt = () => {
+    dispatch(toggleGptSearch());
+  };
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {})
@@ -37,7 +41,7 @@ const Header = () => {
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between no-scrollbar">
       <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
       {user && (<div className="flex p-2 justify-between">
-      <button className=" text-red-600 font-bold text-2xl p-4 px-12 rounded-lg hover:text-red-500 ">Home</button>
+      <button onClick={handleGpt}  className=" text-red-600 font-bold text-2xl p-4 px-12 rounded-lg hover:text-red-500 ">GPT Search</button>
       <button className=" text-red-600 font-bold text-2xl p-4 px-12 rounded-lg hover:text-red-500  ">Movies</button>
       <button className=" text-red-600 font-bold text-2xl p-4 px-12 rounded-lg hover:text-red-500  ">TV Shows</button>
         <img className=" hidden w-12 h-12" alt="usericon" src={USER} />
