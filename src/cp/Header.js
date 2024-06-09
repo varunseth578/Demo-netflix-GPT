@@ -12,6 +12,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store)=> store.gpt.showGptSearch)
 
   const handleGpt = () => {
     dispatch(toggleGptSearch());
@@ -47,18 +48,19 @@ const Header = () => {
       <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
       {user && (
         <div className="flex p-2 ">
-          <select className="p-2 m-2 bg-black text-white rounded-lg" onChange={handlelang}>
+        {showGptSearch && (<select className="p-2 m-2 bg-black text-white rounded-lg" onChange={handlelang}>
             {SUPPORTED_LANG.map((lang) => (
               <option key={lang.identifier} value={lang.identifier}>
                 {lang.name}
               </option>
             ))}
-          </select>
+          </select>)}
+          
           <button
             onClick={handleGpt}
             className=" text-red-600 font-bold text-2xl p-4 px-12 rounded-lg hover:text-red-500 "
           >
-            GPT Search
+            {showGptSearch ? "Home" : "GPT Search"}
           </button>
           <button className=" text-red-600 font-bold text-2xl p-4 px-12 rounded-lg hover:text-red-500  ">
             Movies
