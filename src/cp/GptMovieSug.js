@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const GptMovieSug = () => {
-  return (
-    <div>GptMovieSug</div>
-  )
-}
+  return <div>GptMovieSug</div>;
+};
 
-export default GptMovieSug
+export default GptMovieSug;

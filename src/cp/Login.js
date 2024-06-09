@@ -10,7 +10,7 @@ import { auth } from "../utils/Firebase";
 
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import {BGIMG } from "../utils/constants"
+import { BGIMG } from "../utils/constants";
 
 const Login = () => {
   const [isSignForm, setisSignForm] = useState(true);
@@ -49,14 +49,14 @@ const Login = () => {
                   uid: uid,
                   email: email,
                   displayName: displayName,
-                  photoURL: photoURL,  })
-                );
+                  photoURL: photoURL,
+                })
+              );
             })
             .catch((error) => {
               // An error occurred
               setErrorMessage(error.message);
             });
-         
 
           // ...
         })
@@ -90,9 +90,8 @@ const Login = () => {
   };
   return (
     <div>
-    <Header />
+      <Header />
       <div className="absolute">
-        
         <img src={BGIMG} />
       </div>
 
@@ -137,5 +136,5 @@ const Login = () => {
       </form>
     </div>
   );
-}
+};
 export default Login;
